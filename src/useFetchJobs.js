@@ -45,9 +45,9 @@ const useFetchJobs = (params, page) => {
       .then((result) => {
         dispatch({ type: ACTIONS.GET_DATA, payload: { jobs: result.data } });
       })
-      .catch((err) => {
-        if (axios.isCancel(err)) return;
-        dispatch({ type: ACTIONS.ERROR, payload: { error: err } });
+      .catch((error) => {
+        if (axios.isCancel(error)) return;
+        dispatch({ type: ACTIONS.ERROR, payload: { error: error } });
       });
     const CancelToken2 = axios.CancelToken;
     const source2 = CancelToken2.source();
@@ -62,9 +62,9 @@ const useFetchJobs = (params, page) => {
           payload: { hasNextPage: result.data.length !== 0 },
         });
       })
-      .catch((err) => {
-        if (axios.isCancel(err)) return;
-        dispatch({ type: ACTIONS.ERROR, payload: { error: err } });
+      .catch((error) => {
+        if (axios.isCancel(error)) return;
+        dispatch({ type: ACTIONS.ERROR, payload: { error: error } });
       });
 
     return () => {
